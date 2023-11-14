@@ -1,0 +1,38 @@
+﻿@model IEnumerable<OrderTest_Model.Order>
+
+<br />
+<br />
+    <div class="row">
+    </div>
+    <br />
+    <div>
+        @if (Model.Count() == 0)
+        {
+            <p>Список заказов пуст.</p>
+        }
+        else
+        {
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        Заказ №:
+                    </th>
+                    <th>
+                        Город отправления:
+                    </th>
+                    <th>
+                        Город прибытия:
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.OrderId</td>
+                        <td>@item.SenderCity</td>
+                        <td>@item.DeliveryCity</td>
+                    </tr>
+                }
+            </table>
+            
+        }
+    </div>
