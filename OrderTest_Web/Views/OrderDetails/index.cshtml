@@ -1,0 +1,16 @@
+﻿@model OrderTest_Model.Order
+
+<br />
+<br />
+    <div class="row">
+    </div>
+    <br />
+    <div>
+    <h2>Подробная информация о заказе №@Model.OrderId</h2>
+    <p>Город отправления: @Model.SenderCity</p>
+    <p>Адрес отправления: @Model.SenderAdress</p>
+    <p>Город прибытия: @Model.DeliveryCity</p>
+    <p>Адрес прибытия: @Model.DeliveryAdress</p>
+    <p>Вес посылки: @Model.Weight кг</p>
+    <p>Дата забора посылки: @Model.PickUpDate.ToShortDateString() </p>
+    </div>

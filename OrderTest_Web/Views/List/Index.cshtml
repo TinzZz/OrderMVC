@@ -5,6 +5,7 @@
     <div class="row">
     </div>
     <br />
+    <p>Кликните на заказ для получения подробностей.</p>
     <div>
         @if (Model.Count() == 0)
         {
@@ -26,13 +27,18 @@
                 </tr>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>@item.OrderId</td>
-                        <td>@item.SenderCity</td>
-                        <td>@item.DeliveryCity</td>
+                    <tr onclick="window.location.href='@Url.Action("OrderDetails", "List", new { orderId = item.OrderId })'">
+                        <td>
+                            @item.OrderId
+                        </td>
+                        <td>
+                            @item.SenderCity
+                        </td>
+                        <td>
+                            @item.DeliveryCity
+                        </td>
                     </tr>
                 }
             </table>
-            
         }
     </div>

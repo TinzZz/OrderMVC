@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrderTest_DataAccess;
 
@@ -11,9 +12,11 @@ using OrderTest_DataAccess;
 namespace OrderTest_DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbSetModelSnapshot : ModelSnapshot
+    [Migration("20231114185033_AddDateTypeToPickUpDate")]
+    partial class AddDateTypeToPickUpDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

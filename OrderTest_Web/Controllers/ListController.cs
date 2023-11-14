@@ -18,5 +18,11 @@ namespace OrderTest_Web.Controllers
             List<Order> objList = _context.Orders.ToList();
             return View(objList);
         }
+
+        public ActionResult OrderDetails(int orderId)
+        {
+            Order order = _context.Orders.First(u => u.OrderId == orderId );
+            return View("~/Views/OrderDetails/index.cshtml", order);
+        }
     }
 }

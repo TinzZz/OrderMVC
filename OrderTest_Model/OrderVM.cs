@@ -26,7 +26,7 @@ namespace OrderTest_Model
         [Range(0.01, double.MaxValue, ErrorMessage = "Вес должен быть больше 0")]
         public double Weight { get; set; }
 
-        [DataType(DataType.Date)]                               // Чтобы была доступна только дата, без времени.
+        [DataType(DataType.Date)]
         [Required(ErrorMessage = "Введите дату забора груза!")]
         public DateTime PickUpDate { get; set; }
     }
