@@ -27,7 +27,7 @@
                 </tr>
                 @foreach (var item in Model)
                 {
-                    <tr onclick="window.location.href='@Url.Action("OrderDetails", "List", new { orderId = item.OrderId })'">
+                    <tr class="list-item" onclick="window.location.href='@Url.Action("OrderDetails", "List", new { orderId = item.OrderId })'">
                         <td>
                             @item.OrderId
                         </td>
@@ -42,3 +42,8 @@
             </table>
         }
     </div>
+<style>
+    .list-item {
+        cursor: pointer;
+    }
+</style>

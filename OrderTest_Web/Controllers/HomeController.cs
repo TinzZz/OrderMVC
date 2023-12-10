@@ -21,20 +21,19 @@ namespace OrderTest_Web.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Index(OrderVM obj)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Index(Order obj)
         {
             if (ModelState.IsValid)
             {
-                var order = new Order
+                if (obj.OrderId == 0)
                 {
-                    SenderCity = obj.SenderCity,
-                    SenderAdress = obj.SenderAdress,
-                    DeliveryCity = obj.DeliveryCity,
-                    DeliveryAdress = obj.DeliveryAdress,
-                    PickUpDate = obj.PickUpDate,
-                    Weight = obj.Weight
-                };
-                await _context.Orders.AddAsync(order);
+                    await _context.Orders.AddAsync(obj);
+                }
+                else
+                {
+                    _context.Orders.Update(obj);
+                }                
                 await _context.SaveChangesAsync();
                 return Redirect("/List");
             }
