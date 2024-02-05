@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 using OrderTest_DataAccess;
 using OrderTest_Model;
 
@@ -17,6 +18,35 @@ namespace OrderTest_Web.Controllers
         }
 
         //TODO additional API's.
+
+        [HttpDelete]
+        public IActionResult DeleteOrderById(int id)
+        {
+
+            Order? orderToDelete = _context.Orders.FirstOrDefault(order => order.OrderId == id);
+            if (orderToDelete != null)
+            {
+                _context.Orders.Remove(orderToDelete);
+                _context.SaveChanges();
+            }
+            else
+            {
+                return BadRequest("Заказ не найден!");
+            }
+            return Ok(new {Message = "Заказ удален из базы данных!"});
+        }
+
+        [HttpGet]
+        public IActionResult GetOrderById(int id)
+        {
+
+            Order? orderById = _context.Orders.FirstOrDefault(order => order.OrderId == id);
+            if (orderById == null)
+            {
+                return BadRequest("Заказ не найден!");
+            }
+            return Ok(orderById);
+        }
 
         [HttpGet]
         public IActionResult GetAllOrders()
