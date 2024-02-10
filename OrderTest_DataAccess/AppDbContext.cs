@@ -20,7 +20,7 @@ namespace OrderTest_DataAccess
                 .HasColumnType("DATE");
         }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder options)
+        //protected override void OnConfiguring(DbContextOptionsBuilder options)            // Dont need with Web App. Using with Console App.
         //{
         //    options.UseSqlServer("Server=THROTTLEMACHINE;DataBase=OrderTest;TrustServerCertificate=True;Trusted_Connection=True;");
         //}

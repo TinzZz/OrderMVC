@@ -1,0 +1,29 @@
+version: '3.4'
+
+networks:
+  ordertestappnetwork:
+
+services:
+  ordertestDB:
+    container_name: ordertestDB
+    image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
+    ports:
+     - 8002:1433
+    environment:
+     - ACCEPT_EULA=Y
+     - MSSQL_SA_PASSWORD=TinzZz123#
+    networks:
+     - ordertestappnetwork
+  ordertest_web:
+    container_name: ordertestapp
+    ports:
+    - 8081:8081
+    - 8080:8080
+    image: ${DOCKER_REGISTRY-}ordertestweb
+    build:
+      context: .
+      dockerfile: OrderTest_Web/Dockerfile
+    depends_on:
+     - ordertestDB
+    networks:
+     - ordertestappnetwork
