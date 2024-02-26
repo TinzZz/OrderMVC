@@ -6,18 +6,21 @@ using OrderTest_Model;
 
 namespace OrderTest_Web.Controllers
 {
+    /*
+    The API WEB application with Swagger is created in new project - Diary proj.
+    Current functional is obsolete and wouldn't be updated/modified.
+    For API WEB application review please check the GitHub profile, Diary project.
+    */
+
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class OrderApiController : ControllerBase
     {
         private readonly AppDbContext _context;
-
         public OrderApiController(AppDbContext context)
         {
             _context = context;
         }
-
-        //TODO additional API's.
 
         [HttpDelete]
         public IActionResult DeleteOrderById(int id)
@@ -73,7 +76,5 @@ namespace OrderTest_Web.Controllers
             }
             return BadRequest(ModelState);
         }
-
-
     }
 }
